@@ -1,0 +1,292 @@
+FOOTORIA — AIDE AUX REQUÊTES SQL
+
+==================================================
+AVANT DE COMMENCER
+==================================================
+
+Quelques mots importants :
+
+SELECT
+Permet de choisir les informations que l'on veut afficher.
+
+FROM
+Indique dans quelle table chercher les informations.
+
+WHERE
+Permet de filtrer les résultats.
+
+LIKE
+Permet de rechercher un texte qui correspond à un modèle.
+
+%
+Signifie "n'importe quelle suite de caractères".
+
+Exemple :
+WHERE nom LIKE '%a%'
+
+Cette requête cherche les noms contenant la lettre "a".
+
+JOIN
+Permet de relier plusieurs tables entre elles.
+
+ON
+Indique sur quelles colonnes les tables doivent être reliées.
+
+AS
+Permet de donner un raccourci à une table.
+
+Exemple :
+Joueurs j
+
+Ici, "j" est le raccourci de la table Joueurs.
+
+
+==================================================
+LES TABLES IMPORTANTES
+==================================================
+
+Joueurs
+→ contient les informations sur les joueurs.
+
+Equipe
+→ contient les informations sur les équipes.
+
+competition
+→ contient les compétitions.
+
+qualifier
+→ relie les équipes aux compétitions.
+
+match_
+→ contient les matchs.
+
+marquer
+→ relie les joueurs aux matchs dans lesquels ils ont marqué.
+
+
+==================================================
+MISSION 1 — LA PREMIÈRE TRACE
+==================================================
+
+OBJECTIF :
+
+Cherche les joueurs dont le nom contient la lettre "a".
+
+INDICE :
+
+Tu dois utiliser :
+- SELECT
+- FROM
+- WHERE
+- LIKE
+
+ATTENTION :
+
+Le symbole % permet de chercher la lettre à n'importe
+quelle position dans le nom.
+
+EXEMPLE DE STRUCTURE :
+
+SELECT ...
+FROM ...
+WHERE ...
+
+
+==================================================
+MISSION 2 — LE DOSSIER D'UN JOUEUR
+==================================================
+
+OBJECTIF :
+
+Retrouve l'identifiant de l'équipe de Lucas Martin.
+
+INDICE :
+
+Tu connais :
+- son nom : Martin
+- son prénom : Lucas
+
+Tu dois filtrer les résultats avec WHERE.
+
+Comme tu recherches deux informations en même temps,
+tu peux utiliser AND.
+
+EXEMPLE :
+
+WHERE condition1 AND condition2
+
+
+==================================================
+MISSION 3 — LA CONNEXION
+==================================================
+
+OBJECTIF :
+
+Relie les joueurs à leur équipe.
+
+INDICE :
+
+Les informations sont dans deux tables différentes :
+
+Joueurs
+↓
+id_equipe
+↓
+Equipe
+
+Tu dois utiliser JOIN.
+
+La colonne commune entre les deux tables est :
+
+Joueurs.id_equipe
+Equipe.id_equipe
+
+EXEMPLE DE STRUCTURE :
+
+SELECT ...
+FROM Joueurs j
+JOIN Equipe e
+ON ...
+
+
+==================================================
+MISSION 4 — LES CHAMPIONNATS
+==================================================
+
+OBJECTIF :
+
+Découvre les compétitions auxquelles le Real Madrid
+est associé.
+
+INDICE :
+
+Les informations sont réparties dans trois tables :
+
+Equipe
+↓
+qualifier
+↓
+competition
+
+Tu dois donc utiliser deux JOIN.
+
+Les relations sont :
+
+Equipe.id_equipe
+=
+qualifier.id_equipe
+
+qualifier.id_competition
+=
+competition.id_competition
+
+Utilise ensuite WHERE pour sélectionner
+le Real Madrid.
+
+
+==================================================
+MISSION 5 — LES MATCHS EFFACÉS
+==================================================
+
+OBJECTIF :
+
+Retrouve les matchs associés à Lucas Martin.
+
+INDICE :
+
+Les informations sont réparties dans :
+
+Joueurs
+↓
+marquer
+↓
+match_
+
+Tu dois utiliser deux JOIN.
+
+Les relations sont :
+
+Joueurs.id_joueur
+=
+marquer.id_joueur
+
+marquer.id_match
+=
+match_.id_match
+
+Ensuite, utilise WHERE pour retrouver
+Lucas Martin.
+
+
+==================================================
+MISSION 6 — LE CLUB DISPARU
+==================================================
+
+OBJECTIF :
+
+Retrouve les joueurs liés à la compétition
+"Championnat National 1".
+
+INDICE :
+
+Tu dois traverser plusieurs tables :
+
+Joueurs
+↓
+Equipe
+↓
+qualifier
+↓
+competition
+
+Tu vas donc devoir utiliser plusieurs JOIN.
+
+Commence par relier :
+
+Joueurs → Equipe
+
+Puis :
+
+Equipe → qualifier
+
+Puis :
+
+qualifier → competition
+
+Enfin, utilise WHERE pour rechercher :
+
+Championnat National 1
+
+
+==================================================
+RAPPEL
+==================================================
+
+Pour résoudre une mission :
+
+1. Lis l'indice.
+2. Identifie les tables nécessaires.
+3. Cherche les colonnes permettant de les relier.
+4. Utilise JOIN si plusieurs tables sont nécessaires.
+5. Utilise WHERE pour filtrer.
+6. Lance la requête.
+7. Observe les résultats.
+
+Ne cherche pas à écrire toute la requête d'un coup.
+
+Construis-la progressivement.
+
+
+==================================================
+LES 5 MOTS À RETENIR
+==================================================
+
+SELECT → quoi afficher
+
+FROM → où chercher
+
+WHERE → quoi filtrer
+
+JOIN → quelles tables relier
+
+ON → comment les relier

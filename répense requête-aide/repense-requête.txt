@@ -1,0 +1,71 @@
+FOOTORIA — RÉPONSES DES REQUÊTES SQL
+=====================================
+
+
+MISSION 1 — LA PREMIÈRE TRACE
+
+SELECT nom, prenom
+FROM Joueurs
+WHERE nom LIKE '%a%';
+
+
+-------------------------------------
+
+MISSION 2 — LE DOSSIER D'UN JOUEUR
+
+SELECT id_equipe
+FROM Joueurs
+WHERE nom = 'Martin'
+AND prenom = 'Lucas';
+
+
+-------------------------------------
+
+MISSION 3 — LA CONNEXION
+
+SELECT j.nom, j.prenom, e.nom_des_equipes
+FROM Joueurs j
+JOIN Equipe e
+    ON j.id_equipe = e.id_equipe;
+
+
+-------------------------------------
+
+MISSION 4 — LES CHAMPIONNATS
+
+SELECT c.nom
+FROM Equipe e
+JOIN qualifier q
+    ON e.id_equipe = q.id_equipe
+JOIN competition c
+    ON q.id_competition = c.id_competition
+WHERE e.nom_des_equipes = 'Real Madrid';
+
+
+-------------------------------------
+
+MISSION 5 — LES MATCHS EFFACÉS
+
+SELECT m.id_match, m.date_match, m.Lieu
+FROM Joueurs j
+JOIN marquer mq
+    ON j.id_joueur = mq.id_joueur
+JOIN match_ m
+    ON mq.id_match = m.id_match
+WHERE j.nom = 'Martin'
+AND j.prenom = 'Lucas';
+
+
+-------------------------------------
+
+MISSION 6 — LE CLUB DISPARU
+
+SELECT j.nom, j.prenom
+FROM Joueurs j
+JOIN Equipe e
+    ON j.id_equipe = e.id_equipe
+JOIN qualifier q
+    ON e.id_equipe = q.id_equipe
+JOIN competition c
+    ON q.id_competition = c.id_competition
+WHERE c.nom = 'Championnat National 1';
