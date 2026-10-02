@@ -1,0 +1,1 @@
+ETML (P_BD_141) FOOTORIA — SQL Investigation > Dossier #666 — Le Club Disparu Footoria est une application web ludique qui met le visiteur dans la peau d'un enquêteur : en écrivant de vraies requêtes SQL dans un terminal intégré au site, des archives, à travers 6 missions de difficulté croissante.
